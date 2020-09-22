@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<style>
+	
+#background-image {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 630px;
+  height: auto;
+}
+
+.colors {
+  display: flex;
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  z-index: 3;
+}
+
+.color {
+  height: 36px;
+  width: 36px;
+  margin-left: 0.5em;
+  border-radius: 18px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #aaa;
+  cursor: pointer;
+}
+
+canvas {
+   width: 620px;
+   height: 600px;
+}
+
+#can{
+  fill: #ffffff;
+}
+
+</style>
+
+<body>
+
+<div id="container">
+
+   <canvas id="can" width="800" height="600" style="border:1px solid #d3d3d3;"></canvas>
+
+   <img id="background-image" src="img/953ef9b4-7611-4f93-b2e4-ab2c10c01c8b.jpg" alt="">
+
+</div>
+
+<div class="colors">
+
+  <div class="color" style="background-color: #e1e851" data-hex="#e1e851"></div>
+  <div class="color" style="background-color: #8cd147" data-hex="#8cd147"></div>
+  <div class="color" style="background-color: #4a9ccf" data-hex="#4a9ccf"></div>
+  <div class="color" style="background-color: #661f45" data-hex="#661f45"></div>
+  <div class="color" style="background-color: #1e2024" data-hex="#1e2024"></div>
+
+  <input type="color" class="color" value="#8888ff" id="colorPicker">
+
+</div>
+
+<script>
+
+const colorPicker = document.getElementById("colorPicker");
+
+colorPicker.addEventListener("input", function(event) {
+  can.style.backgroundColor = event.target.value;
+}, false);
+
+const el = document.getElementsByClassName("color");
+for (let i = 0; i < el.length; i++) {
+  el[i].onclick = changeColor;
+}
+
+function changeColor(e) {
+  const hex = e.target.getAttribute("data-hex");
+  can.style.backgroundColor = hex;
+}i
+
+</script>
+</body>
+</html>
